@@ -7,3 +7,6 @@
 
 本機執行：`npm install && npm start`，開 http://localhost:8080
 環境變數：`PORT`、`TURN_SECONDS`（預設 15）、`PLACE_SECONDS`（預設 60）
+
+## 一鍵部署到 Render（免費）
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/qa29173687-ship-it/naval-battle-online)
