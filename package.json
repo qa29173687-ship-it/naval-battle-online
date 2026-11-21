@@ -1,0 +1,10 @@
+{
+  "name": "naval-battle-online",
+  "version": "1.0.0",
+  "description": "海戰棋 2-5 人連線對戰（server-authoritative）",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "dependencies": { "ws": "^8.23.0" }
+}

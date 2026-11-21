@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#0b4f8a">
+<title>海戰棋 Online</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- 大廳 -->
+  <section id="lobby" class="screen">
+    <div class="logo"><span class="anchor">⚓</span><h1>海戰棋</h1><p>2–5 人連線大亂鬥</p></div>
+    <div class="card">
+      <label>你的暱稱</label>
+      <input id="nick" maxlength="10" placeholder="輸入暱稱">
+      <button id="btnCreate" class="btn orange">建立房間</button>
+      <div class="or">或輸入房號加入</div>
+      <div class="row">
+        <input id="joinCode" maxlength="4" placeholder="房號" autocapitalize="characters">
+        <button id="btnJoin" class="btn blue">加入</button>
+      </div>
+    </div>
+    <div class="rules">
+      <b>玩法</b>：每人在 8×8 海域藏 4 艘船（4、3、3、2 格）。每回合 15 秒，大家同時選一個對手、一格開火，最後還有船的人獲勝。
+    </div>
+  </section>
+
+  <!-- 等待室 -->
+  <section id="room" class="screen hidden">
+    <div class="card">
+      <div class="small">房號</div>
+      <div id="roomCode" class="code">----</div>
+      <button id="btnShare" class="btn ghost">複製邀請連結</button>
+      <ul id="roomPlayers" class="plist"></ul>
+      <button id="btnStart" class="btn orange">開始遊戲</button>
+      <div id="roomHint" class="small center"></div>
+      <button id="btnLeave" class="btn ghost">離開房間</button>
+    </div>
+  </section>
+
+  <!-- 遊戲 -->
+  <section id="game" class="screen hidden">
+    <header class="topbar"><div id="opps" class="opps"></div></header>
+    <div class="phase" id="phaseText"></div>
+    <div class="seaTitle">⚓ 我的海域 ⚓</div>
+    <div class="boardWrap">
+      <div class="colLabels" id="colLabels"></div>
+      <div class="boardRow"><div class="rowLabels" id="rowLabels"></div><div id="myBoard" class="board sea"></div></div>
+    </div>
+
+    <div id="placePanel" class="panel">
+      <div id="shipChips" class="chips"></div>
+      <div class="row">
+        <button id="btnRotate" class="btn blue sm">↻ 旋轉</button>
+        <button id="btnRandom" class="btn blue sm">🎲 隨機擺放</button>
+        <button id="btnReady" class="btn orange sm">準備好了</button>
+      </div>
+      <div class="small center" id="placeHint">點船再點海域擺放；點已擺的船可選取、拖曳或旋轉</div>
+    </div>
+
+    <div id="tray" class="panel tray hidden">
+      <div class="trayHead"><span>⚔️ 目標：</span><b id="trayName"></b><span id="trayAvatar" class="miniAv"></span></div>
+      <div class="tgrid">
+        <div class="tcols" id="tcols"></div>
+        <div class="boardRow"><div class="rowLabels small" id="trows"></div><div id="targetBoard" class="board target"></div></div>
+      </div>
+    </div>
+    <div id="pickHint" class="panel pickHint hidden">點上方的對手頭像，選擇要攻擊的目標</div>
+    <button id="btnFire" class="btn fire hidden">🔥 開火</button>
+  </section>
+
+  <div id="over" class="overlay hidden">
+    <div class="card center">
+      <div id="overEmoji" class="bigEmoji">🏆</div>
+      <h2 id="overTitle"></h2>
+      <p id="overSub" class="small"></p>
+      <button id="btnRematch" class="btn orange">再來一局</button>
+      <button id="btnViewBoard" class="btn blue">看大家的船</button>
+      <button id="btnExit" class="btn ghost">回到大廳</button>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <div id="conn" class="conn hidden">連線中斷，請重新整理</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
